@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% block content %}
+<h1>RECOMMENDED FOR YOU</h1>
+<a class="c-black" href="{% url 'forum-create' %}">
+    <div class="card-discuss-add card-promo">
+        <i class="bi bi-plus-lg"></i> New Post
+    </div>
+</a>
+{% for post in forum %}
+<a class="c-black" href="{% url 'forum-detail' post.id %}">
+    <div class="card-discuss card-promo">
+        <div class="row row-l">
+            <div class="col">
+                <img class="shop-pic" src="{{ post.profile_picture }}" alt="kocheng">
+            </div>
+            <div class="col-80 ml-10">
+                <h1 class="card-title-promotion">{{ post.title }}</h1>
+                <p>{{ post.content|truncatechars:80 }}</p>
+                <span class="exp-promo">Posted by {{ post.author }} on {{ post.date_posted }}</span>
+            </div>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endblock content %}
+            

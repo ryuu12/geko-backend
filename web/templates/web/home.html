@@ -1,0 +1,75 @@
+{% extends "web/base.html" %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <h1>{{ message }}</h1>
+    {% endfor %}
+{% endif %}
+<h1>NEW STORE THIS MONTH</h1>
+<div class="row row-l">
+    {% for post in shop %}
+    <div class="col-50">
+        <div class="card">
+            <div class="row row-l">
+                <div class="col">
+                    <img class="shop-pic" src="{{ post.logo }}" alt="kocheng">
+                </div>
+                <div class="col">
+                    <h1 class="card-title">{{ post.name }}</h1>
+                    <a class="card-btn" href="#">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<h1>RECENT FORUM POST</h1>
+{% for post in forum %}
+<a class="c-black" href="{% url 'forum-detail' post.id %}">
+    <div class="card-discuss card-promo">
+        <div class="row row-l">
+            <div class="col">
+                <img class="shop-pic" src="{{ post.profile_picture }}" alt="kocheng">
+            </div>
+            <div class="col-80 ml-10">
+                <h1 class="card-title-promotion">{{ post.title }}</h1>
+                <p>{{ post.content|linebreaks }}</p>
+                <span class="exp-promo">Posted by {{ post.author }} on {{ post.date_posted }}</span>
+            </div>
+        </div>
+    </div>
+</a>
+{% endfor %}
+<h1>RECENT JOB VACANCIES</h1>
+{% for post in vacancy %}
+<div class="card card-promo">
+    <div class="row row-l">
+        <div class="col">
+            <img class="shop-pic" src="{{ post.logo }}" alt="kocheng">
+        </div>
+        <div class="col ml-10">
+            <h1 class="card-title-promotion">{{ post.shop }}[{{ post.position }}]</h1>
+            <a class="card-btn-promo" href="{% url 'job-detail' post.id %}">View</a>
+            <a class="card-btn-promo-fill" href="{{ post.external_link }}">Claim</a>
+            <span class="exp-promo">Until: {{ post.date_due }} </span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<h1>RECENT DEALS</h1>   
+{% for post in promo %}
+<div class="card card-promo">
+    <div class="row row-l">
+        <div class="col">
+            <img class="shop-pic" src="{{ post.logo }}" alt="kocheng">
+        </div>
+        <div class="col ml-10">
+            <h1 class="card-title-promotion">{{ post.title }}</h1>
+            <a class="card-btn-promo" href="#">Check</a>
+            <a class="card-btn-promo" href="{{ post.external_link }}">Claim</a>
+            <span class="exp-promo">Exp: {{ post.date_due }} </span>
+        </div>
+    </div>
+</div>
+{% endfor %}       
+{% endblock content %}

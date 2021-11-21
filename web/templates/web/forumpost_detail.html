@@ -1,0 +1,15 @@
+{% extends "web/base.html" %}
+{% block content %}
+<div class="card-discuss card-promo">
+    <div class="row row-l">
+        <div class="col">
+            <img class="shop-pic" src="{{ object.profile_picture }}" alt="kocheng">
+        </div>
+        <div class="col-80 ml-10">
+            <h1 class="card-title-promotion">{{ object.title|linebreaks }}</h1>
+            <p>{{ object.content|linebreaks }}</p>
+            <span class="exp-promo">objected by {{ object.author }} on {{ object.date_objected }}</span>
+        </div>
+    </div>
+</div>
+{% endblock content %}

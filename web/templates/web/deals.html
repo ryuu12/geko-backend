@@ -1,0 +1,24 @@
+{% extends "web/base.html" %}
+{% block content %}
+<h1>AVAILABLE</h1>
+<a class="c-black" href="{% url 'deals-create' %}">
+    <div class="card-discuss-add card-promo">
+        <i class="bi bi-plus-lg"></i> Create Announcement
+    </div>
+</a>
+{% for post in promo %}
+<div class="card card-promo">
+    <div class="row row-l">
+        <div class="col">
+            <img class="shop-pic" src="{{ post.logo }}" alt="kocheng">
+        </div>
+        <div class="col ml-10">
+            <h1 class="card-title-promotion">{{ post.title }}</h1>
+            <a class="card-btn-promo" href="{% url 'deals-detail' post.id%}">Check</a>
+            <a class="card-btn-promo" href="{{ post.external_link }}">Claim</a>
+            <span class="exp-promo">Exp: {{ post.date_due }} </span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
