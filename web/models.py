@@ -50,7 +50,7 @@ class JobPost(models.Model):
         ordering = ['-date_posted']
 
     def get_absolute_url(self):
-        return reverse('web-vacancy')
+        return reverse('web-vacancies')
 
 class PromotionPost(models.Model):
     title = models.CharField(max_length=100, unique=False)
