@@ -41,7 +41,7 @@ class JobPost(models.Model):
     content = models.TextField()
     external_link = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    date_due = models.DateTimeField()
+    date_due = models.CharField(max_length=100, unique=False)
 
     def __str__(self):
         return self.shop
@@ -58,7 +58,7 @@ class PromotionPost(models.Model):
     content = models.TextField()
     external_link = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    date_due = models.DateTimeField()
+    date_due = models.CharField(max_length=100, unique=False)
 
     def __str__(self):
         return self.title
